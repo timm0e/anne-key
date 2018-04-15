@@ -19,15 +19,13 @@ use keymatrix::{COLUMNS, ROWS};
 
 pub type Layout = [Action; COLUMNS * ROWS];
 
-pub const LAYERS: [Layout; 4] = [BASE, FN, FN2, BT];
+pub const LAYERS: [Layout; 3] = [BASE, FN, BT];
 
 pub const LAYER_FN: u8 = 1;
-pub const LAYER_FN2: u8 = 2;
 pub const LAYER_BT: u8 = 3;
 
 // activate by indexing into LAYERS
 const FN_M: Action = LayerMomentary(LAYER_FN);
-const FN2_M: Action = LayerMomentary(LAYER_FN2);
 const __: Action = Transparent;
 const LED_NT: Action = LedNextTheme;
 const LED_NB: Action = LedNextBrightness;
@@ -39,23 +37,15 @@ pub const BASE: Layout = layout![
     Tab      Q      W    E  R  T     Y  U  I     O   P      LBracket RBracket  BSlash
     Capslock A      S    D  F  G     H  J  K     L   SColon Quote    No        Enter
     LShift   Z      X    C  V  B     N  M  Comma Dot Slash  No       No        RShift
-    LCtrl    LMeta  LAlt No No Space No No No    No  RAlt   FN_M     FN2_M     RCtrl
+    LCtrl    LMeta  LAlt No No Space No No No    No  RAlt   Application     RCtrl     FN_M
 ];
 
 pub const FN: Layout = layout![
-  Grave F1   F2   F3    F4        F5      F6     F7     F8   F9         F10    F11    F12 __
+  Grave F1   F2   F3    F4        F5      F6     F7     F8   F9         F10    F11    F12 Delete
   __    __   Up   __    LedToggle LED_NAS LED_NB LED_NT Up   Scrolllock Pause  Home   End PScreen
   __    Left Down Right __        __      __     Left   Down Right      PgUp   PgDown No  __
-  __    __   __   __    __        BT_ON   __     __     __   Insert     Delete No     No  __
-  __    __   __   No    No        Reset   No     No     No   No         __     __     __  __
-];
-
-pub const FN2: Layout = layout![
-    LedOff LedOn LED_NT LED_NAS LED_NB __ __ __ __ __ __ __ __ __
-    __     __    __     __      __     __ __ __ __ __ __ __ __ __
-    __     __    __     __      __     __ __ __ __ __ __ __ No __
-    __     __    __     __      __     __ __ __ __ __ __ __ __ __
-    __     __    __     No      No     __ No No No No __ __ __ __
+  __    __   __   __    __        BT_ON   __     __     __   Insert     Up No     No  __
+  __    __   __   No    No        Reset   No     No     No   No         Left     Down     Right  __
 ];
 
 #[cfg_attr(rustfmt, rustfmt_skip)]
