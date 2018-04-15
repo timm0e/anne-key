@@ -22,7 +22,7 @@ pub type Layout = [Action; COLUMNS * ROWS];
 pub const LAYERS: [Layout; 3] = [BASE, FN, BT];
 
 pub const LAYER_FN: u8 = 1;
-pub const LAYER_BT: u8 = 3;
+pub const LAYER_BT: u8 = 2;
 
 // activate by indexing into LAYERS
 const FN_M: Action = LayerMomentary(LAYER_FN);
